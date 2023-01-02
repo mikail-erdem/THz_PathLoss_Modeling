@@ -1,0 +1,38 @@
+cff-version: 0.0.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Erdem"
+  given-names: "Mikail"
+- family-names: "Saleem"
+  given-names: "Ammar"
+- family-names: "Gurbuz"
+  given-names: "Ozgur"
+- family-names: "Ecemis"
+  given-names: "Cansu"
+- family-names: "Saeed"
+  given-names: "Akhtar"
+title: "A Simple Analytical Model for THz Band Path Loss"
+date-released: 2023-01-02
+url: "https://github.com/mikail-erdem/THz_PathLoss_Modeling"
+preferred-citation:
+  type: article
+  authors:
+- family-names: "Erdem"
+  given-names: "Mikail"
+- family-names: "Saleem"
+  given-names: "Ammar"
+- family-names: "Gurbuz"
+  given-names: "Ozgur"
+- family-names: "Ecemis"
+  given-names: "Cansu"
+- family-names: "Saeed"
+  given-names: "Akhtar"
+  #doi: "10.0000/00000"
+  journal: "IEEE Communication Letters"
+  month: XX
+  start: XX
+  end: XX
+  title: "A Simple Analytical Model for THz Band Path Loss"
+  issue: XX
+  volume: XX
+  year: 20XX
