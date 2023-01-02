@@ -17,17 +17,16 @@ url: "https://github.com/mikail-erdem/THz_PathLoss_Modeling"
 preferred-citation:
   type: article
   authors:
-- family-names: "Erdem"
-  given-names: "Mikail"
-- family-names: "Saleem"
-  given-names: "Ammar"
-- family-names: "Gurbuz"
-  given-names: "Ozgur"
-- family-names: "Ecemis"
-  given-names: "Cansu"
-- family-names: "Saeed"
-  given-names: "Akhtar"
-  #doi: "10.0000/00000"
+  - family-names: "Erdem"
+    given-names: "Mikail"
+  - family-names: "Saleem"
+    given-names: "Ammar"
+  - family-names: "Gurbuz"
+    given-names: "Ozgur"
+  - family-names: "Ecemis"
+    given-names: "Cansu"
+  - family-names: "Saeed"
+    given-names: "Akhtar"
   journal: "IEEE Communication Letters"
   month: XX
   start: XX
