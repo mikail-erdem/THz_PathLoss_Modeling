@@ -1,19 +1,40 @@
+% =========================================================================
+% -- This is the Matlab Script to predict path loss in dB (consisting of 
+% absorption loss and free space spread loss) at frequency bands of 
+% 0.7902-0.9097 THz and 0.93-0.9397 THz for the distance from 1 m to 100 m  
+% and the altitude (height) from 0 m to 1000 m.
+% =========================================================================
+% -- (c) 2023 Mikail Erdem, Ammar Saleem, Ozgur Gurbuz, Cansu Ecemis, and
+%             Akhtar Saeed
+%
+% -- e-mail: mikail@sabanciuniv.edu; ammarsaleem@sabanciuniv.edu;
+%            ozgur.gurbuz@sabanciuniv.edu; cansu.ecemis@ogr.deu.edu.tr;
+%            akhtar.saeed@dsu.edu.pk
+% =========================================================================
+% -- M. Erdem, A. Saleem, O. Gurbuz, C. Ecemis and A. Saeed, 
+% "A Simple Analytical Model for THz Band Path Loss," in 
+% IEEE Communications Letters, vol. 27, no. 3, pp. 996-1000, March 2023, 
+% doi: 10.1109/LCOMM.2023.3241403.
+% =========================================================================
+
 clc;clear;
-% Specify any walue of frqeuncy: 0.7902-0.9097,0.93-0.9397 THz, 
+% Specify any value of frequency: 0.7902-0.9097,0.93-0.9397 THz, 
 % distance: 1:100m, height: 0:1000m
-f = 0.8; % In THZ
+f = 0.8; % In THz
 h = 0;   % In meters
-d = 6.8; % In meters
+d = 50; % In meters
+
+%% Predict Transmittance
 transPred = ModelTransmittance(f,h,d);
+disp(['Transmittance Predicted Value: ',num2str(transPred)])
 
-disp(['Trans-Pred Value: ',num2str(transPred)])
-
-%% Calculate path loss
+%% Calculate Path Loss
 % Transmittance
 [PLspread_dB_Pred , PLabs_dB_Pred] = Trans2PL(f,d,transPred);
-disp(['PL-Pred Value: ',num2str(PLabs_dB_Pred)])
+PL_total_dB_Pred = PLspread_dB_Pred + PLabs_dB_Pred;
+disp(['Path Loss Predicted Value [dB]: ',num2str(PL_total_dB_Pred)])
 
-%% Calculate Transmittance from Model
+%% Calculate Transmittance from the Model
 function transPred = ModelTransmittance(f,h,d)
 % Input:
 % f: Frequency 0.79025-0.90974,0.93002-0.93969 THz
@@ -55,13 +76,13 @@ elseif Idxmin == 2% f lies in BAND-2
 else
     error('something wrong in the code')
 end
-% Now use the computed coefficent "b","a" in equation bH = a*exp(-b*x),aH=1
+% Now use the computed coefficient "b","a" in equation bH = a*exp(-b*x),aH=1
 % For BAND-1, and BAND-2
 bH = a*exp(b*h);
 aH=1;
 transPred = aH*exp(bH*d);
 end
-%% Trans-2-PathLoss
+%% Transmittance-to-PathLoss
 function [PLspread_dB , PLabs_dB] = Trans2PL(Freq_THz,d,Trans)
 Freq_Hz = Freq_THz.*1e12;
 % Trans(Trans<0)=0;
